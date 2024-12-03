@@ -16,6 +16,7 @@ class StudentAgent(Agent):
     """
     A dummy class for your implementation. Feel free to use this class to
     add any helper functionalities needed for your agent.
+    
     """
 
     def __init__(self):
@@ -30,6 +31,9 @@ class StudentAgent(Agent):
         self.tree = MCTree()
         self.first_iteration = True
         self.node = None
+
+        self.rollout_start_time = 20
+        self.rollout_iter_time = 0.5
 
     def step(self, chess_board, my_pos, adv_pos, max_step):
         """
@@ -51,14 +55,14 @@ class StudentAgent(Agent):
             new_set = set()
             new_set.add(my_pos)
             self.node = Node(chess_board, my_pos, adv_pos, max_step, new_set)
-            t_end = time.time() + 28
+            t_end = time.time() + self.rollout_start_time
             while time.time() < t_end:
                 self.tree.do_rollout(self.node)
             self.first_iteration = False
         else:
             self.node.board = chess_board
             self.node.adv_pos = adv_pos
-            t_end = time.time() + 1.5
+            t_end = time.time() + self.rollout_iter_time
             while time.time() < t_end:
                 self.tree.do_rollout(self.node)
 
@@ -66,6 +70,9 @@ class StudentAgent(Agent):
         self.node = move
         return move.cur_pos, move.d
 
+# So there is tree creation and tree rollout.
+# Creation gets as many iterations of this game as we let it, finding this best ones for us.
+# Rollout goes through the tree over x seconds finding the best options.
 
 class MCTree:
     # Monte Carlo tree searcher. First rollout the tree then choose a move.

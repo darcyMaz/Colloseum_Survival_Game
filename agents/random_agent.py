@@ -16,6 +16,7 @@ class RandomAgent(Agent):
         self.autoplay = True
 
     def step(self, chess_board, my_pos, adv_pos, max_step):
+
         # Moves (Up, Right, Down, Left)
         ori_pos = deepcopy(my_pos)
         moves = ((-1, 0), (0, 1), (1, 0), (0, -1))
