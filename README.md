@@ -1,5 +1,12 @@
 # Colosseum Survival!
 
+The work I (Darcy Mazloum) have done on this repository has been in the agents folder.
+I did not make this game.
+I made the AIs which play the game.
+
+Credit for this game's creation goes to my professor of COMP 424: Artificial Intelligence, David Meger.
+One of the AI's was created by my group partner for this course names Catriona McIntosh. It is called student_agent.py
+
 **Project Description & Template** : https://www.overleaf.com/read/vnygbjryrxrt
 
 <p align="center">
